@@ -1,8 +1,8 @@
 from ..models import Measurement
 
 def get_measurements():
-    Measurement = Measurement.objects.all()
-    return Measurement
+    measurement = Measurement.objects.all()
+    return measurement
 
 def get_measurement(mea_pk):
     measurement = Measurement.objects.get(pk=mea_pk)
