@@ -28,7 +28,7 @@ def variable_view(request, pk):
     if request.method == 'GET':
         variable = vl.get_variable(pk)
         variable_dto = serializers.serialize('json', 'variable_dto')
-        return HttpResponse(variable_dto, 'application/json')
+        return HttpResponse(variable, 'application/json')
 
     if request.method == 'PUT':
         variable_dto = vl.update_variable(pk, json.loads(request.body))

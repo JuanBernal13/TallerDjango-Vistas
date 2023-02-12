@@ -11,7 +11,7 @@ def measurements_view(request):
         if id:
             measurement_dto=ml.get_measurement(request)
             measurement=serializers.serialize('json',[measurement_dto,])
-            return HttpResponse(measurement_dto,'application/json')
+            return HttpResponse(measurement,'application/json')
 
         else:
             measurements_dto=ml.get_measurements()
@@ -28,9 +28,10 @@ def measurement_view(request, pk):
     if request.method == 'GET':
         measurement = ml.get_measurement(pk)
         measurement_dto = serializers.serialize('json', 'measurement_dto')
-        return HttpResponse(measurement_dto, 'application/json')
+        return HttpResponse(measurement, 'application/json')
 
     if request.method == 'PUT':
         measurement_dto = ml.update_measurement(pk, json.loads(request.body))
         measurement = serializers.serialize('json', [measurement_dto,])
         return HttpResponse(measurement, 'application/json')
+    
