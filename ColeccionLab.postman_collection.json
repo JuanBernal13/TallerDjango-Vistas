@@ -1,19 +1,19 @@
 {
 	"info": {
-		"_postman_id": "1be95811-8aea-4f59-9e99-feb22bd78b29",
-		"name": "Measurement",
+		"_postman_id": "edf29977-8174-4bbf-a48a-fbfaa686947b",
+		"name": "ColeccionLab",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23398886"
 	},
 	"item": [
 		{
-			"name": "Create Measurement",
+			"name": "Create Variable",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"variable\":{\"id\":1},\r\n    \"Value\":5.0,\r\n    \"Unit\": \"kg\",\r\n    \"Place\":\"Universidad\"\r\n}\r\n\r\n",
+					"raw": "{\"value\": 5.0}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -98,7 +98,7 @@
 			]
 		},
 		{
-			"name": "Retrive Measurement",
+			"name": "Retrive Measurements",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -115,14 +115,19 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}:{{port}}{{api_path}}/measurements/1",
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements?id=1",
 					"host": [
 						"{{host}}"
 					],
 					"port": "{{port}}{{api_path}}",
 					"path": [
-						"measurements",
-						"1"
+						"measurements"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -247,97 +252,6 @@
 			]
 		},
 		{
-			"name": "Update Measurement",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"New Measurement\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}:{{port}}{{api_path}}/measurements/1",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}{{api_path}}",
-					"path": [
-						"measurements",
-						"1"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Update Variable",
-					"originalRequest": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"New Var\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}:{{port}}{{api_path}}/variables/3",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}{{api_path}}",
-							"path": [
-								"variables",
-								"3"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Date",
-							"value": "Tue, 09 Nov 2021 18:36:40 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.8.9"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Length",
-							"value": "73"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "Referrer-Policy",
-							"value": "same-origin"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"model\": \"variables.variable\",\n        \"pk\": 3,\n        \"fields\": {\n            \"name\": \"New Var\"\n        }\n    }\n]"
-				}
-			]
-		},
-		{
 			"name": "Retrive Measurement",
 			"request": {
 				"method": "GET",
@@ -409,6 +323,62 @@
 					"body": "[\n    {\n        \"model\": \"variables.variable\",\n        \"pk\": 3,\n        \"fields\": {\n            \"name\": \"New Var\"\n        }\n    }\n]"
 				}
 			]
+		},
+		{
+			"name": "Post Measurement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n              { \"id\":1,\r\n                \"variable\":1,\r\n            \"value\": 50.0,\r\n            \"unit\": \"F\",\r\n            \"place\": \"Medellin\"\r\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Measurement Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n              { \r\n                \r\n            \"value\": 45.0\r\n        \r\n            \r\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

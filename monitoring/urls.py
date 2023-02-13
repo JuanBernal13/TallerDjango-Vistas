@@ -25,5 +25,5 @@ urlpatterns = [
 
     path('variables/',include('variables.urls')),
 
-    path('measurements/', include('measurements.urls'))
+    path('measurements/', include('measurements.urls')),
 ]

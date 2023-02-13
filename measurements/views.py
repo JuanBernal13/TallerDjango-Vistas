@@ -9,7 +9,7 @@ def measurements_view(request):
     if request.method == 'GET':
         id=request.GET.get('id', None)
         if id:
-            measurement_dto=ml.get_measurement(request)
+            measurement_dto=ml.get_measurement(id)
             measurement=serializers.serialize('json',[measurement_dto,])
             return HttpResponse(measurement,'application/json')
 
@@ -26,8 +26,8 @@ def measurements_view(request):
 @csrf_exempt
 def measurement_view(request, pk):
     if request.method == 'GET':
-        measurement = ml.get_measurement(pk)
-        measurement_dto = serializers.serialize('json', 'measurement_dto')
+        measurement_dto = ml.get_measurement(pk)
+        measurement = serializers.serialize('json', measurement_dto)
         return HttpResponse(measurement, 'application/json')
 
     if request.method == 'PUT':

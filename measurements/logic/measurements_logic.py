@@ -10,11 +10,12 @@ def get_measurement(mea_pk):
 
 def update_measurement(mea_pk, new_mea):
     measurement = get_measurement(mea_pk)
-    measurement.name = new_mea["name"]
+    measurement.value = new_mea["value"]
     measurement.save()
     return measurement
 
-def create_measurement(mea):
-    measurement = measurement(name=mea["name"])
+def create_measurement(var):
+    measurement = Measurement(var["id"],var["variable"], value=var["value"], unit = var["unit"], place=var["place"])
     measurement.save()
     return measurement
+    

@@ -9,7 +9,7 @@ def variables_view(request):
     if request.method == 'GET':
         id=request.GET.get('id', None)
         if id:
-            variable_dto=vl.get_variable(request)
+            variable_dto=vl.get_variable(id)
             variable=serializers.serialize('json',[variable_dto,])
             return HttpResponse(variable_dto,'application/json')
 
@@ -26,8 +26,8 @@ def variables_view(request):
 @csrf_exempt
 def variable_view(request, pk):
     if request.method == 'GET':
-        variable = vl.get_variable(pk)
-        variable_dto = serializers.serialize('json', 'variable_dto')
+        variable_dto = vl.get_variable(pk)
+        variable = serializers.serialize('json', variable_dto)
         return HttpResponse(variable, 'application/json')
 
     if request.method == 'PUT':
